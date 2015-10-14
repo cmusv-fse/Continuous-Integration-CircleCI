@@ -1,0 +1,12 @@
+{
+  "name": "BSK",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "expect.js": "^0.3.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-mocha-test": "^0.12.7"
+  }
+}
