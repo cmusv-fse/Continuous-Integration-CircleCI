@@ -1,14 +1,12 @@
 # language setting
 language: node_js
 
-# version numbers, testing against two versions of node
+# version numbers
 node_js:
     - 4.1.2
 
 before_install:
 # Activate the required node.js version. $SHIPPABLE_NODE_VERSION
-  - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
-  - node --version
   - npm install -g grunt-cli mocha istanbul
 
 # 'npm install' is executed by default in Shippable - shown here for illustrative purposes
