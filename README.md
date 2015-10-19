@@ -5,7 +5,7 @@ Reference for Unit Testing lab for FSE Fall 2015 at CMU-SV.
 
 Install
 ==============
-1. Install needed tools using: `npm install -g grunt mocha istanbul`
+1. Install needed tools using: `npm install -g grunt-cli mocha istanbul`
 2. Install needed dependencies using: `npm install`
 
 Tests results
