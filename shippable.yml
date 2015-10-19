@@ -1,0 +1,40 @@
+# language setting
+language: node_js
+
+# version numbers, testing against two versions of node
+node_js:
+    - 4.1.2
+
+before_install:
+# Activate the required node.js version. $SHIPPABLE_NODE_VERSION
+  - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+  - node --version
+  - npm install -g grunt-cli mocha istanbul
+
+# 'npm install' is executed by default in Shippable - shown here for illustrative purposes
+install:
+  - npm install
+
+# Running npm test to run your test cases
+script:
+    - grunt test
+
+# The path for Xunit to output test reports
+env:
+  - XUNIT_FILE=shippable/testresults/result.xml
+
+# Create directories for test and coverage reports
+before_script:
+      - mkdir -p shippable/testresults
+      - mkdir -p shippable/codecoverage
+
+# Tell istanbul to generate a coverage report
+after_script:
+     - grunt coverage
+     - ./node_modules/.bin/istanbul report cobertura --dir  shippable/codecoverage/
+
+# Pushing to production if everything passes
+# after_success:
+#    - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.heroku && herok$
+#    - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
+#    - git push -f heroku master
