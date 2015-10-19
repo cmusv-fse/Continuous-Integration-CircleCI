@@ -14,19 +14,30 @@ module.exports = function(grunt) {
             },
             src: ['test/**/*.js']
           }
+        },
+        mocha_istanbul: {
+            coverage: {
+                src: 'test', // a folder works nicely
+                options: {
+                    mochaOptions: ['--ui', 'tdd'] // any extra options for mocha
+                }
+            }
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     // grunt.loadNpmTasks('grunt-mocha'); Client Side testing
     grunt.loadNpmTasks('grunt-mocha-test');
-
+    grunt.loadNpmTasks('grunt-mocha-istanbul');
 
     // Default task(s).
     grunt.registerTask('default', ['mochaTest']);
 
     //Test
     grunt.registerTask('test', ['mochaTest']);
+
+    //Coverage
+    grunt.registerTask('coverage', ['mocha_istanbul']);
 
 
 };
