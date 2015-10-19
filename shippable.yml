@@ -19,7 +19,8 @@ script:
 
 # The path for Xunit to output test reports
 env:
-  - XUNIT_FILE=shippable/testresults/result.xml
+  - MOCHA_FILE=shippable/testresults/result.xml
+  - mocha test --reporter mocha-junit-reporter
 
 # Create directories for test and coverage reports
 before_script:
@@ -28,7 +29,6 @@ before_script:
 
 # Tell istanbul to generate a coverage report
 after_script:
-     - grunt coverage
      - ./node_modules/.bin/istanbul report cobertura --dir  shippable/codecoverage/
 
 # Pushing to production if everything passes

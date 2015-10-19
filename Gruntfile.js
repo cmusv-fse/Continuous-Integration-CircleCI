@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         mochaTest: {
-          test: {
+          local: {
             options: {
               reporter: 'spec',
               //captureFile: 'results.txt', // Optionally capture the reporter output to a file
@@ -13,7 +13,16 @@ module.exports = function(grunt) {
               ui: 'tdd'
             },
             src: ['test/**/*.js']
-          }
+          },
+          shippable: {
+            options: {
+              reporter: 'mocha-junit-reporter',
+              captureFile: 'shippable/testresults/result.xml', // Optionally capture the reporter output to a file
+              ui: 'tdd'
+            },
+            src: ['test/**/*.js']
+          },
+
         },
         mocha_istanbul: {
             coverage: {
@@ -31,10 +40,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-istanbul');
 
     // Default task(s).
-    grunt.registerTask('default', ['mochaTest']);
+    grunt.registerTask('default', []);
 
     //Test
-    grunt.registerTask('test', ['mochaTest']);
+    grunt.registerTask('test', ['mochaTest:local']);
+
+    // Shippable
+    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
 
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);
