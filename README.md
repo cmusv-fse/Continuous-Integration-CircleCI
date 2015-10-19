@@ -1,3 +1,4 @@
+![Alt text](https://img.shields.io/shippable/562529bf1895ca44741ea1bd.svg)
 Bowling Score Card - TDD
 ==============
 Implementation of a bowling score card.
@@ -20,4 +21,16 @@ Coverage results
 
 Shippable integration - CI
 ==============
-TODO
+![Alt text](https://img.shields.io/shippable/562529bf1895ca44741ea1bd.svg)
+
+* Link your account with shippable by following [Step 3: Enable CI/CD for repos](http://docs.shippable.com/#step-3-enable-cicd-for-repos).
+
+* After the account is linked, when you push changes to the repo shippable will run your tests and code coverage.
+
+* You can see the results under `Tests` and `Coverage`.
+
+### Test Results
+![Alt text](/coverage/testresult.jpg)
+
+### Code Coverage
+![Alt text](/coverage/coverageresult.jpg)
