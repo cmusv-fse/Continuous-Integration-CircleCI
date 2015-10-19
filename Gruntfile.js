@@ -17,7 +17,9 @@ module.exports = function(grunt) {
           shippable: {
             options: {
               reporter: 'mocha-junit-reporter',
-              captureFile: 'shippable/testresults/result.xml', // Optionally capture the reporter output to a file
+              reporterOptions: {
+                mochaFile: 'shippable/testresults/result.xml'
+              },
               ui: 'tdd'
             },
             src: ['test/**/*.js']

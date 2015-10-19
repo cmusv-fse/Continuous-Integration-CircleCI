@@ -15,12 +15,11 @@ install:
 
 # Running npm test to run your test cases
 script:
-    - grunt test
+    - grunt shippable
 
 # The path for Xunit to output test reports
 env:
   - MOCHA_FILE=shippable/testresults/result.xml
-  - mocha test --reporter mocha-junit-reporter
 
 # Create directories for test and coverage reports
 before_script:
