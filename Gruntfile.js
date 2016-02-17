@@ -14,26 +14,28 @@ module.exports = function(grunt) {
             },
             src: ['test/**/*.js']
           },
-          shippable: {
+          circleci: {
             options: {
+              ui: 'tdd',
               reporter: 'mocha-junit-reporter',
+              quiet: false,
               reporterOptions: {
-                mochaFile: 'shippable/testresults/result.xml'
-              },
-              ui: 'tdd'
+                mochaFile: process.env.CIRCLE_TEST_REPORTS + '/mocha/results.xml'
+              }
             },
             src: ['test/**/*.js']
-          },
-
+          }
         },
         mocha_istanbul: {
             coverage: {
                 src: 'test', // a folder works nicely
                 options: {
                     mochaOptions: ['--ui', 'tdd'] // any extra options for mocha
+                    istanbulOptions: ['--dir', process.env.CIRCLE_ARTIFACTS + '/coverage']
                 }
             }
         }
+    },
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -48,7 +50,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['mochaTest:local']);
 
     // Shippable
-    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
+    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);

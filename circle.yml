@@ -1,0 +1,26 @@
+# setup node environment
+machine:
+  node:
+    version: 4.1.2
+
+# merge master before testing to make sure all tests pass
+# with the updated version of master
+checkout:
+   post:
+   # Sometimes git might ask for your identity and block the build. Add one valid account here:
+    - git config user.email "arminm89@gmail.com" 
+    - git config user.name "Armin Mahmoudi"
+   # Merge with master on CircleCI before running the tests.
+    - git merge --no-ff origin/master
+
+# install dependencies
+dependencies:
+  override:
+    - npm install -g grunt-cli mocha istanbul
+    - npm install
+
+# run tests
+test:
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/mocha
+    - grunt circle
