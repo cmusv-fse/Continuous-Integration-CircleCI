@@ -30,8 +30,8 @@ CircleCI integration - CI
 
 * You can see the results under `Test Summary` and `Artifacts > Coverage`.
 
-### Test Results
-![Alt text](/coverage/testresult.jpg)
+### Test Summary
+![Alt text](/coverage/TestSummary.png)
 
-### Code Coverage
-![Alt text](/coverage/coverageresult.jpg)
+### Artifacts > Coverage
+![Alt text](/coverage/Artifacts.png)

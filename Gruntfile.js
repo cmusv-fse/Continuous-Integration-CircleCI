@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         },
       },
 
-      mocha_istanbul: {
+      mocha_istanbul_circleci: {
           coverage: {
               src: 'test', // a folder works nicely
               options: {
@@ -35,7 +35,16 @@ module.exports = function(grunt) {
                   istanbulOptions: ['--dir', process.env.CIRCLE_ARTIFACTS + '/coverage']
               }
           }
-      }
+      },
+      mocha_istanbul_local: {
+          coverage: {
+              src: 'test', // a folder works nicely
+              options: {
+                  mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
+                  istanbulOptions: ['--dir', process.env.CIRCLE_ARTIFACTS + '/coverage']
+              }
+          }
+      },
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -50,10 +59,10 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['mochaTest:local']);
 
     // Shippable
-    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
+    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul_circleci']);
 
     //Coverage
-    grunt.registerTask('coverage', ['mocha_istanbul']);
+    grunt.registerTask('coverage', ['mocha_istanbul_local']);
 
 
 };
