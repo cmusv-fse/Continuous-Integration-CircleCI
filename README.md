@@ -18,7 +18,7 @@ Coverage results
 ==============
 * `grunt coverage`
 * The results with be in `coverage/lcov-report/index.html`
-![Alt text](/coverage/coverage.jpg)
+![Alt text](/resources/coverage.jpg)
 
 CircleCI integration - CI
 ==============
@@ -31,7 +31,7 @@ CircleCI integration - CI
 * You can see the results under `Test Summary` and `Artifacts > Coverage`.
 
 ### Test Summary
-![Alt text](/coverage/TestSummary.png)
+![Alt text](/resources/TestSummary.png)
 
 ### Artifacts > Coverage
-![Alt text](/coverage/Artifacts.png)
+![Alt text](/resources/Artifacts.png)

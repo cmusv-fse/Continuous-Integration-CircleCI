@@ -1,3 +1,4 @@
+var coverageFolder = process.env.CIRCLE_TEST_REPORTS == undefined ? 'coverage' : process.env.CIRCLE_TEST_REPORTS + '/coverage';
 module.exports = function(grunt) {
 
     // Project configuration.
@@ -27,24 +28,15 @@ module.exports = function(grunt) {
         },
       },
 
-      mocha_istanbul_circleci: {
+      mocha_istanbul: {
           coverage: {
               src: 'test', // a folder works nicely
               options: {
                   mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
-                  istanbulOptions: ['--dir', process.env.CIRCLE_ARTIFACTS + '/coverage']
+                  istanbulOptions: ['--dir', coverageFolder]
               }
           }
-      },
-      mocha_istanbul_local: {
-          coverage: {
-              src: 'test', // a folder works nicely
-              options: {
-                  mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
-                  istanbulOptions: ['--dir', process.env.CIRCLE_ARTIFACTS + '/coverage']
-              }
-          }
-      },
+      }
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -55,14 +47,13 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('default', []);
 
-    //Test
+    // Test
     grunt.registerTask('test', ['mochaTest:local']);
 
-    // Shippable
-    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul_circleci']);
+    // CircleCI
+    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
     //Coverage
-    grunt.registerTask('coverage', ['mocha_istanbul_local']);
-
+    grunt.registerTask('coverage', ['mocha_istanbul']);
 
 };
