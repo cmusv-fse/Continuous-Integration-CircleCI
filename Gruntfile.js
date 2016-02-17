@@ -1,39 +1,42 @@
+var coverageFolder = process.env.CIRCLE_TEST_REPORTS == undefined ? 'coverage' : process.env.CIRCLE_TEST_REPORTS + '/coverage';
 module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        mochaTest: {
-          local: {
-            options: {
-              reporter: 'spec',
-              //captureFile: 'results.txt', // Optionally capture the reporter output to a file
-              quiet: false, // Optionally suppress output to standard out (defaults to false)
-              clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
-              ui: 'tdd'
-            },
-            src: ['test/**/*.js']
+      pkg: grunt.file.readJSON('package.json'),
+      mochaTest: {
+        local: {
+          options: {
+            reporter: 'spec',
+            //captureFile: 'results.txt', // Optionally capture the reporter output to a file
+            quiet: false, // Optionally suppress output to standard out (defaults to false)
+            clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
+            ui: 'tdd'
           },
-          shippable: {
-            options: {
-              reporter: 'mocha-junit-reporter',
-              reporterOptions: {
-                mochaFile: 'shippable/testresults/result.xml'
-              },
-              ui: 'tdd'
-            },
-            src: ['test/**/*.js']
-          },
-
+          src: ['test/**/*.js']
         },
-        mocha_istanbul: {
-            coverage: {
-                src: 'test', // a folder works nicely
-                options: {
-                    mochaOptions: ['--ui', 'tdd'] // any extra options for mocha
-                }
+        circleci: {
+          options: {
+            ui: 'tdd',
+            reporter: 'mocha-junit-reporter',
+            quiet: false,
+            reporterOptions: {
+              mochaFile: process.env.CIRCLE_TEST_REPORTS + '/mocha/results.xml'
             }
-        }
+          },
+          src: ['test/**/*.js']
+        },
+      },
+
+      mocha_istanbul: {
+          coverage: {
+              src: 'test', // a folder works nicely
+              options: {
+                  mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
+                  istanbulOptions: ['--dir', coverageFolder]
+              }
+          }
+      }
     });
 
     // Load the plugin that provides the "uglify" task.
@@ -44,14 +47,13 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('default', []);
 
-    //Test
+    // Test
     grunt.registerTask('test', ['mochaTest:local']);
 
-    // Shippable
-    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
+    // CircleCI
+    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);
-
 
 };
