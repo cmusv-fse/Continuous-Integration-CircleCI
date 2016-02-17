@@ -23,4 +23,4 @@ dependencies:
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/mocha
-    - grunt circle
+    - grunt circleci
