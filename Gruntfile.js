@@ -24,13 +24,14 @@ module.exports = function(grunt) {
             }
           },
           src: ['test/**/*.js']
-        }
+        },
       },
+
       mocha_istanbul: {
           coverage: {
               src: 'test', // a folder works nicely
               options: {
-                  mochaOptions: ['--ui', 'tdd'] // any extra options for mocha
+                  mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
                   istanbulOptions: ['--dir', process.env.CIRCLE_ARTIFACTS + '/coverage']
               }
           }
