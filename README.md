@@ -1,8 +1,9 @@
-![Alt text](https://img.shields.io/shippable/562529bf1895ca44741ea1bd.svg)
-Bowling Score Card - TDD
+Continuous Integration (CircleCI) [![Circle CI](https://circleci.com/gh/cmusv-fse/Continuous-Integration-CircleCI/tree/master.svg?style=svg)](https://circleci.com/gh/cmusv-fse/Continuous-Integration-CircleCI/tree/master)
+
 ==============
 Implementation of a bowling score card.
 Reference for Unit Testing lab for FSE Fall 2015 at CMU-SV.
+Updated for CircleCI Integration for FSE Spring 2016 at CMU-SV.
 
 Install
 ==============
@@ -19,15 +20,15 @@ Coverage results
 * The results with be in `coverage/lcov-report/index.html`
 ![Alt text](/coverage/coverage.jpg)
 
-Shippable integration - CI
+CircleCI integration - CI
 ==============
-![Alt text](https://img.shields.io/shippable/562529bf1895ca44741ea1bd.svg)
+![Alt text](https://circleci.com/gh/cmusv-fse/Continuous-Integration-CircleCI)
 
-* Link your account with shippable by following [Step 3: Enable CI/CD for repos](http://docs.shippable.com/#step-3-enable-cicd-for-repos).
+* Link your account with CircleCI by following ["Getting Started with CircleCI"](https://circleci.com/docs/getting-started).
 
-* After the account is linked, when you push changes to the repo shippable will run your tests and code coverage.
+* After the account is linked, when you push changes to the repo CircleCI will run your tests and code coverage.
 
-* You can see the results under `Tests` and `Coverage`.
+* You can see the results under `Test Summary` and `Artifacts > Coverage`.
 
 ### Test Results
 ![Alt text](/coverage/testresult.jpg)
