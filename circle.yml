@@ -11,7 +11,7 @@ checkout:
     - git config user.email "arminm89@gmail.com" 
     - git config user.name "Armin Mahmoudi"
    # Merge with master on CircleCI before running the tests.
-    - git merge --no-ff origin/master
+    - git rebase origin/master
 
 # install dependencies
 dependencies:

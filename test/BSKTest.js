@@ -228,28 +228,28 @@ suite('Bowling Score Test', function(){
       done();
   });
 
-  test('Best Score', function(done){
-       var game = new Game();
+  // test('Best Score', function(done){
+  //      var game = new Game();
 
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addFrame(new Frame(10,0));
-    	game.addBonusThrow(10);
-    	game.addBonusThrow(10);
-      for(var i=1;i<10;i++){
-          expect(30).to.eql(game.frameScore(i));
-      }
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addFrame(new Frame(10,0));
+  //   	game.addBonusThrow(10);
+  //   	game.addBonusThrow(10);
+  //     for(var i=1;i<10;i++){
+  //         expect(30).to.eql(game.frameScore(i));
+  //     }
 
-    	expect(300).to.eql(game.score());
-      done();
-  });
+  //   	expect(300).to.eql(game.score());
+  //     done();
+  // });
 
   test('Real Game', function(done){
 
