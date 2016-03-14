@@ -35,7 +35,7 @@ Game.prototype.bonusThrowsScores = function() {
 Game.prototype.frameScore = function(i) {
 
 		if( i < this._gameSize && this._frames[i].isStrike() && this._frames[i-1].isStrike()) {
-			if (i+1 == 10) {
+			if (i+1 == 9) {
 				return (this._frames[i-1].sum() + this._frames[i].sum()) + this._bonusThrows[0];
 			} else {
 				return(this._frames[i-1].sum() +
