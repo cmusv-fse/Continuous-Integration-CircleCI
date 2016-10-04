@@ -2,8 +2,12 @@
   "name": "BSK",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "expect.js": "^0.3.1",
+    "express": "^4.14.0",
     "istanbul": "^0.4.0"
   },
   "devDependencies": {
