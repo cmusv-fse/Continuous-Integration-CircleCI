@@ -2,9 +2,8 @@
   "name": "BSK",
   "version": "0.0.0",
   "private": true,
-  "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "PORT=3000 node app.js"
   },
   "dependencies": {
     "expect.js": "^0.3.1",
