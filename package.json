@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3000 node app.js"
+    "start": "node app.js FSE-ESN",
+	"stop": "killall -SIGINT FSE-ESN"
   },
   "dependencies": {
     "expect.js": "^0.3.1",
