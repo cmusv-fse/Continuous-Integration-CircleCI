@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js FSE-ESN",
-	"stop": "killall -SIGINT FSE-ESN"
+    "stop": "killall -SIGINT FSE-ESN"
   },
   "dependencies": {
     "expect.js": "^0.3.1",
