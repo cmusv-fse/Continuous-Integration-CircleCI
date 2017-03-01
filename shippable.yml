@@ -13,7 +13,7 @@ services:
 # Declare global variables to be used during your build.
 env:
   global:
-    - APP_NAME=fse-cmu-continuous-delivery
+    - APP_NAME=ci-shippable-heroku
     - IS_SHIPPABLE=true
     - CLEARDB_DATABASE_URL=mysql://shippable@127.0.0.1:3306/test
     - XUNIT_FILE=shippable/testresults/result.xml
