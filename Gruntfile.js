@@ -75,7 +75,7 @@ module.exports = function(grunt) {
     grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
     // Shippable
-    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
+    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul_shippable']);
 
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);
