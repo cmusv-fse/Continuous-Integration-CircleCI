@@ -31,10 +31,12 @@ build:
     - npm install -g grunt-cli mocha istanbul
     - npm install
     - grunt shippable
+    - istanbul report cobertura --dir shippable/codecoverage/
 
 # Commands to run after a successfull build
 after_success:
-  - cp -rf ./coverage/ shippable/codecoverage/
+
+  #- cp -rf ./coverage/ shippable/codecoverage/
   #- git push -f git@heroku.com:$APP_NAME.git master
 
 # Notifications for each build
