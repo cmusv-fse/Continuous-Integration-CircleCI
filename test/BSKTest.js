@@ -30,7 +30,8 @@ suite('Bowling Score Test', function(){
         game.addFrame(new Frame(4,5));
         game.addFrame(new Frame(8,1));
         game.addFrame(new Frame(2,6));
-        expect(81).to.eql(game.score());
+        ///expect(81).to.eql(game.score());
+      	expect(9000).to.eql(game.score());
         done();
   });
 
