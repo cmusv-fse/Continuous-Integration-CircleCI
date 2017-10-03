@@ -6,7 +6,7 @@ process.title = process.argv[2];
 var port = normalizePort(process.env.PORT || '3000');
 
 app.get('/', function (req, res) {
-		  res.send('Hi. This App has been updated through Circle CI!');
+		  res.send('Hi. Komala was here!');
 });
 
 app.listen(port, function () {
