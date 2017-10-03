@@ -54,7 +54,7 @@ module.exports = function(grunt) {
               src: 'test', // a folder works nicely
               options: {
                   mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
-                  istanbulOptions: ['--dir', 'shippable/coverage']
+                  istanbulOptions: ['--dir', 'shippable/codecoverage']
               }
           }
       }
