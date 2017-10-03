@@ -34,6 +34,7 @@ build:
 
 # Commands to run after a successfull build
 after_success:
+  - cp -rf coverage shippable/covecoverage/
   #- git push -f git@heroku.com:$APP_NAME.git master
 
 # Notifications for each build
