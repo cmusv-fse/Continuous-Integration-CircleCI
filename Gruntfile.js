@@ -47,6 +47,16 @@ module.exports = function(grunt) {
                   istanbulOptions: ['--dir', coverageFolder]
               }
           }
+      },
+
+      mocha_istanbul_shippable: {
+          coverage: {
+              src: 'test', // a folder works nicely
+              options: {
+                  mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
+                  istanbulOptions: ['--dir', 'shippable/coverage']
+              }
+          }
       }
     });
 
@@ -64,6 +74,7 @@ module.exports = function(grunt) {
     // CircleCI
     grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
+    // Shippable
     grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
 
     //Coverage
