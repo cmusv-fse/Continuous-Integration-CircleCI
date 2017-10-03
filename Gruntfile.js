@@ -44,7 +44,9 @@ module.exports = function(grunt) {
               src: 'test', // a folder works nicely
               options: {
                   mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
-                  istanbulOptions: ['--dir', coverageFolder]
+                  istanbulOptions: ['--dir', coverageFolder],
+                  reporter: 'spec',
+                  reportFormats: ['html', 'lcovonly']
               }
           }
       }
