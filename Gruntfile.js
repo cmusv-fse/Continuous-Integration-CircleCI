@@ -17,11 +17,22 @@ module.exports = function(grunt) {
         },
         circleci: {
           options: {
+              ui: 'tdd',
+              reporter: 'mocha-junit-reporter',
+              quiet: false,
+              reporterOptions: {
+                  mochaFile: process.env.CIRCLE_TEST_REPORTS + '/mocha/results.xml'
+              }
+          },
+          src: ['test/**/*.js']
+        },
+        shippable: {
+          options: {
             ui: 'tdd',
             reporter: 'mocha-junit-reporter',
             quiet: false,
             reporterOptions: {
-              mochaFile: process.env.CIRCLE_TEST_REPORTS + '/mocha/results.xml'
+              mochaFile: 'shippable/testresults/mocha/results.xml'
             }
           },
           src: ['test/**/*.js']
@@ -53,7 +64,7 @@ module.exports = function(grunt) {
     // CircleCI
     grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
-    grunt.registerTask('shippable', ['mochaTest:circleci', 'mocha_istanbul']);
+    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
 
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);
