@@ -53,6 +53,8 @@ module.exports = function(grunt) {
     // CircleCI
     grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
 
+    grunt.registerTask('shippable', ['mochaTest:circleci', 'mocha_istanbul']);
+
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);
 

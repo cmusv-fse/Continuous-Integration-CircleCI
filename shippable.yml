@@ -1,0 +1,41 @@
+# Specify the language that you want to use.
+language: node_js
+
+# Set the language version number
+node_js:
+  - 4.1.2
+
+# Declare the services you want to use for your build. eg: databases
+services:
+  # - mysql
+  # - postgres
+
+# Declare global variables to be used during your build.
+env:
+  global:
+    - APP_NAME=fse-cmu-continuous-delivery
+    - IS_SHIPPABLE=true
+    - CLEARDB_DATABASE_URL=mysql://shippable@127.0.0.1:3306/test
+    - XUNIT_FILE=shippable/testresults/result.xml
+
+# Setup your environment before the build starts.
+before_script:
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  # - mysql -e 'drop database if exists test;'
+
+# Your build commands goes here
+build:
+  # Commands that should be executed during the build.
+  ci:
+    - npm install -g grunt-cli mocha istanbul
+    - npm install
+    - grunt shippable
+
+# Commands to run after a successfull build
+after_success:
+  #- git push -f git@heroku.com:$APP_NAME.git master
+
+# Notifications for each build
+notifications:
+   email: false
