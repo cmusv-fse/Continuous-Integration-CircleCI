@@ -20,8 +20,8 @@ env:
 
 # Setup your environment before the build starts.
 before_script:
-  #- mkdir -p shippable/testresults
-  #- mkdir -p shippable/coverage/
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage/
   # - mysql -e 'drop database if exists test;'
 
 # Your build commands goes here
@@ -34,7 +34,7 @@ build:
 
 # Commands to run after a successfull build
 after_success:
-  - cp -rf coverage shippable/coverage/
+  - cp -rf ./coverage/ shippable/codecoverage/
   #- git push -f git@heroku.com:$APP_NAME.git master
 
 # Notifications for each build
