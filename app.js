@@ -6,7 +6,7 @@ process.title = process.argv[2];
 var port = normalizePort(process.env.PORT || '3000');
 
 app.get('/', function (req, res) {
-		  res.send('Hi. How are you today!');
+		  res.send('Hi. How are you today! Thanks Arthur.');
 });
 
 app.listen(port, function () {
