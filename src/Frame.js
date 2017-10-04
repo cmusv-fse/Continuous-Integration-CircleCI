@@ -18,8 +18,7 @@ Frame.prototype.isStrike = function(){
 };
 
 Frame.prototype.sum = function(){
-  return 900;
-  //return this._firstThrow + this._secondThrow;
+  return this._firstThrow + this._secondThrow;
 };
 
 Frame.prototype.isSpare = function(){
