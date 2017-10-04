@@ -4,7 +4,7 @@ function Game(){
     this._frames = [];
     this._bonusThrow = 0;
     this._bonusThrows = [];
-    this._gameSize = 10;
+    this._gameSize = 5;
 };
 
 Game.prototype.addFrame = function(frame){
