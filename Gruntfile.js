@@ -40,6 +40,7 @@ module.exports = function(grunt) {
       },
 
       mocha_istanbul: {
+        circleci: {
           coverage: {
               src: 'test', // a folder works nicely
               options: {
@@ -49,6 +50,16 @@ module.exports = function(grunt) {
                   reportFormats: ['html', 'lcovonly']
               }
           }
+        },
+        shippable:{
+          coverage: {
+              src: 'test', // a folder works nicely
+              options: {
+                  mochaOptions: ['--ui', 'tdd'], // any extra options for mocha
+                  istanbulOptions: ['--dir', 'shippable/codecoverage']
+              }
+          }
+        }
       }
 
     });
@@ -65,9 +76,10 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['mochaTest:local']);
 
     // CircleCI
-    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul']);
+    grunt.registerTask('circleci', ['mochaTest:circleci', 'mocha_istanbul:circleci']);
 
-    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul']);
+    // Shippable
+    grunt.registerTask('shippable', ['mochaTest:shippable', 'mocha_istanbul:shippable']);
 
     //Coverage
     grunt.registerTask('coverage', ['mocha_istanbul']);
